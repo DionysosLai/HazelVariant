@@ -1,4 +1,4 @@
 bin/
 bin-int
 .vs/
-*.vcx*
+*.user
