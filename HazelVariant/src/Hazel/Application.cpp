@@ -32,7 +32,14 @@ namespace Hazel {
 
 	void Hazel::Application::OnEvent(Event& e)
 	{
-		HZ_CORE_TRACE("{0}", e);
+		EventDispatcher dispatcher(e);
+		dispatcher.Dispatch<WindowCloseEvent>(BINDE_EVENT_FN(OnWindowClosed));
+	}
+
+	bool Application::OnWindowClosed(WindowCloseEvent& e)
+	{
+		m_Running = false;
+		return false;
 	}
 
 	Hazel::Application* Hazel::CreateAppliation()
