@@ -1,4 +1,7 @@
-bin/*
-bin-int
+# Directories
 .vs/
+bin/
+bin-int
+
+# Files
 *.user
