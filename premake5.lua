@@ -7,132 +7,134 @@ workspace "HazelVariant"
 		"Release",
 		"Dist"
 	}
+	startproject "Sandbox"
 
-	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
-	-- Include directories relative to root folder (solution directory)
-	IncludeDir = {}
-	IncludeDir["GLFW"] = "HazelVariant/vendor/GLFW/include"
-	IncludeDir["Glad"] = "HazelVariant/vendor/Glad/include"
-	IncludeDir["Imgui"] = "HazelVariant/vendor/imgui"
+outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
-	include "HazelVariant/vendor/GLFW"
-	include "HazelVariant/vendor/Glad"
-	include "HazelVariant/vendor/imgui"
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "HazelVariant/vendor/GLFW/include"
+IncludeDir["Glad"] = "HazelVariant/vendor/Glad/include"
+IncludeDir["Imgui"] = "HazelVariant/vendor/imgui"
 
-	project "HazelVariant"
-		location "HazelVariant"
-		kind "SharedLib"
-		language "C++"
+include "HazelVariant/vendor/GLFW"
+include "HazelVariant/vendor/Glad"
+include "HazelVariant/vendor/imgui"
 
-		targetdir ("bin/" .. outputdir ..   "/%{prj.name}")
-		objdir ("bin-int/" .. outputdir ..   "/%{prj.name}")
+project "HazelVariant"
+	location "HazelVariant"
+	kind "SharedLib"
+	language "C++"
 
-		pchheader "Hzpch.h"
-		pchsource "HazelVariant/src/Hzpch.cpp"
+	targetdir ("bin/" .. outputdir ..   "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir ..   "/%{prj.name}")
 
-		files 
-		{ 
-			"%{prj.name}/src/**.h", 
-			"%{prj.name}/src/**.cpp",
-		}
+	pchheader "Hzpch.h"
+	pchsource "HazelVariant/src/Hzpch.cpp"
 
-		includedirs
+	files 
+	{ 
+		"%{prj.name}/src/**.h", 
+		"%{prj.name}/src/**.cpp",
+	}
+
+	includedirs
+	{
+		"%{prj.name}/src",
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.Imgui}"
+	}
+
+	links 
+	{ 
+		"GLFW",
+		"Glad",
+		"Imgui",
+		"opengl32.lib"
+	}
+
+	filter "system:windows"
+		cppdialect "C++17"
+		staticruntime "On"
+		systemversion "latest"
+
+		defines
 		{
-			"%{prj.name}/src",
-			"%{prj.name}/vendor/spdlog/include",
-			"%{IncludeDir.GLFW}",
-			"%{IncludeDir.Glad}",
-			"%{IncludeDir.Imgui}"
+			"HZ_PLATFOR_WINDOWS",
+			"HZ_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
-		links 
+		postbuildcommands 
 		{ 
-			"GLFW",
-			"Glad",
-			"Imgui",
-			"opengl32.lib"
+			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
 		}
+	filter "configurations:Debug"
+		defines "HZ_DEBUG"
+		buildoptions "/MDd"
+		symbols "On"
+		
+	filter "configurations:Release"
+		defines "HZ_RELEASE"
+		buildoptions "/MD"
+		optimize "On"
 
-		filter "system:windows"
-			cppdialect "C++17"
-			staticruntime "On"
-			systemversion "latest"
+	filter "configurations:Dist"
+		defines "HZ_DIST"
+		buildoptions "/MD"
+		optimize "On"
 
-			defines
-			{
-				"HZ_PLATFOR_WINDOWS",
-				"HZ_BUILD_DLL",
-				"GLFW_INCLUDE_NONE"
-			}
+project "Sandbox"
+	location "Sandbox"
+	kind "ConsoleApp"
+	language "C++"
 
-			postbuildcommands 
-			{ 
-				("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
-			}
-		filter "configurations:Debug"
-			defines "HZ_DEBUG"
-			buildoptions "/MDd"
-			symbols "On"
-			
-		filter "configurations:Release"
-			defines "HZ_RELEASE"
-			buildoptions "/MD"
-			optimize "On"
+	targetdir ("bin/" .. outputdir ..   "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir ..   "/%{prj.name}")
 
-		filter "configurations:Dist"
-			defines "HZ_DIST"
-			buildoptions "/MD"
-			optimize "On"
+	files 
+	{ 
+		"%{prj.name}/src/**.h", 
+		"%{prj.name}/src/**.cpp",
+	}
 
-	project "Sandbox"
-		location "Sandbox"
-		kind "ConsoleApp"
-		language "C++"
+	includedirs 
+	{
+		"HazelVariant/src",
+		"HazelVariant/vendor/spdlog/include"
+	}
 
-		targetdir ("bin/" .. outputdir ..   "/%{prj.name}")
-		objdir ("bin-int/" .. outputdir ..   "/%{prj.name}")
+	links
+	{
+		"HazelVariant"
+	}
 
-		files 
-		{ 
-			"%{prj.name}/src/**.h", 
-			"%{prj.name}/src/**.cpp",
-		}
+	filter "system:windows"
+		cppdialect "C++17"
+		staticruntime "On"
+		systemversion "latest"
 
-		includedirs 
+		defines
 		{
-			"HazelVariant/src",
-			"HazelVariant/vendor/spdlog/include"
+			"HZ_PLATFOR_WINDOWS"
 		}
 
-		links
-		{
-			"HazelVariant"
-		}
 
-		filter "system:windows"
-			cppdialect "C++17"
-			staticruntime "On"
-			systemversion "latest"
+	filter "configurations:Debug"
+		defines "HZ_DEBUG"
+		buildoptions "/MDd"
+		symbols "On"
+		
+	filter "configurations:Release"
+		defines "HZ_RELEASE"
+		buildoptions "/MD"
+		optimize "On"
 
-			defines
-			{
-				"HZ_PLATFOR_WINDOWS"
-			}
-
-
-		filter "configurations:Debug"
-			defines "HZ_DEBUG"
-			buildoptions "/MDd"
-			symbols "On"
-			
-		filter "configurations:Release"
-			defines "HZ_RELEASE"
-			buildoptions "/MD"
-			optimize "On"
-
-		filter "configurations:Dist"
-			defines "HZ_DIST"
-			buildoptions "/MD"
-			optimize "On"
+	filter "configurations:Dist"
+		defines "HZ_DIST"
+		buildoptions "/MD"
+		optimize "On"
 
