@@ -18,9 +18,12 @@ IncludeDir["GLFW"] = "HazelVariant/vendor/GLFW/include"
 IncludeDir["Glad"] = "HazelVariant/vendor/Glad/include"
 IncludeDir["Imgui"] = "HazelVariant/vendor/imgui"
 
-include "HazelVariant/vendor/GLFW"
-include "HazelVariant/vendor/Glad"
-include "HazelVariant/vendor/imgui"
+group "Dependencies"
+	include "HazelVariant/vendor/GLFW"
+	include "HazelVariant/vendor/Glad"
+	include "HazelVariant/vendor/imgui"
+
+group ""
 
 project "HazelVariant"
 	location "HazelVariant"
