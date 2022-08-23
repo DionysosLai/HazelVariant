@@ -81,11 +81,5 @@ namespace Hazel {
 		m_LayerStack.PushOverlay(layer);
 		layer->OnAttach();
 	}
-
-	Hazel::Application* Hazel::CreateAppliation()
-	{
-		return nullptr;
-	}
-
 }
 
