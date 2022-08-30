@@ -74,10 +74,6 @@ namespace Hazel {
 		m_Shader.reset(new Shader(vertexSrc, fragmentSrc));
 	}
 
-	Hazel::Application::~Application()
-	{
-	}
-
 	void Hazel::Application::Run()
 	{
 		while (m_Running)
