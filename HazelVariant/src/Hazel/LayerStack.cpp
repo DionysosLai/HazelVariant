@@ -15,20 +15,20 @@ namespace Hazel {
 
 	void LayerStack::PushLayer(Layer* layer)
 	{
-		m_Layers.emplace(m_Layers.begin() + m_LayerInsertIndex, layer);
+		m_Layers.emplace(m_Layers.begin() + m_LayerInsertIndex, layer);	// 指定位置插入，从前往后
 		m_LayerInsertIndex++;
 		layer->OnAttach();
 	}
 
 	void LayerStack::PushOverlay(Layer* overlay)
 	{
-		m_Layers.emplace_back(overlay);
+		m_Layers.emplace_back(overlay);	// 尾巴插入
 		overlay->OnAttach();
 	}
 
 	void LayerStack::PopLayer(Layer* layer)
 	{
-		auto it = std::find(m_Layers.begin(), m_Layers.end(), layer);
+		auto it = std::find(m_Layers.begin(), m_Layers.begin() + m_LayerInsertIndex, layer); // 查找时，从前面开始查找，对应pushlayer 函数
 		if (it != m_Layers.end())
 		{
 			layer->OnDetach();
@@ -39,7 +39,7 @@ namespace Hazel {
 
 	void LayerStack::PopOverlay(Layer* overlay)
 	{
-		auto it = std::find(m_Layers.begin(), m_Layers.end(), overlay);
+		auto it = std::find(m_Layers.begin() + m_LayerInsertIndex, m_Layers.end(), overlay);	// 尾巴查找，对应函数PushOverlay
 		if (it != m_Layers.end())
 		{
 			overlay->OnDetach();
