@@ -9,6 +9,8 @@
 #include "Hazel/Renderer/Renderer.h"
 #include <Hazel/Renderer/RenderCommand.h>
 
+#include <glfw/glfw3.h>
+
 namespace Hazel {
 #define BINDE_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 	Application* Application::s_Instance = nullptr;
@@ -29,9 +31,13 @@ namespace Hazel {
 	{
 		while (m_Running)
 		{
+			float time = (float)glfwGetTime();
+			Timestep timestep = time - m_LastFrameTime;
+			m_LastFrameTime = time;
+
 			for (Layer* layer : m_LayerStack)
 			{
-				layer->OnUpdate();
+				layer->OnUpdate(timestep);
 			}
 
 			m_ImGuiLayer->Begin();

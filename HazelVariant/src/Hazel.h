@@ -15,6 +15,8 @@
 #include "Hazel/Events/KeyEvent.h"
 #include "Hazel/Events/MouseEvent.h"
 
+#include "Hazel/Core/Timestep.h"
+
 // ---Renderer------------------------
 #include "Hazel/Renderer/Renderer.h"
 #include "Hazel/Renderer/RenderCommand.h"
