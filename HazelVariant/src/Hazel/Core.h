@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #ifdef HZ_PLATFOR_WINDOWS
 	#if HZ_DYNAMIC_LINK
 		#ifdef HZ_BUILD_DLL
@@ -37,5 +39,4 @@ namespace Hazel {
 
 	template<typename T>
 	using Ref = std::shared_ptr<T>;
-
 }
