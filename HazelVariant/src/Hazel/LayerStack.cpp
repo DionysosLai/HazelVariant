@@ -29,7 +29,7 @@ namespace Hazel {
 	void LayerStack::PopLayer(Layer* layer)
 	{
 		auto it = std::find(m_Layers.begin(), m_Layers.begin() + m_LayerInsertIndex, layer); // 查找时，从前面开始查找，对应pushlayer 函数
-		if (it != m_Layers.end())
+		if (it != m_Layers.begin() + m_LayerInsertIndex)
 		{
 			layer->OnDetach();
 			m_Layers.erase(it);
