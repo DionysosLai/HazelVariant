@@ -5,6 +5,12 @@
 namespace Hazel {
 	class HAZEL_API Input
 	{
+	protected:
+		Input() = default;
+	public:
+		Input(const Input&) = delete;
+		Input& operator=(const Input&) = delete;
+
 	public:
 		inline static bool IsKeyPressed(int keycode)
 		{
