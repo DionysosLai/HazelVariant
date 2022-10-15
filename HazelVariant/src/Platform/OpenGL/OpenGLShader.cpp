@@ -295,7 +295,9 @@ namespace Hazel {
 			glDeleteProgram(program);
 
 			for (auto id : glShaderIDs)
+			{
 				glDeleteShader(id);
+			}
 
 			HZ_CORE_ERROR("{0}", infoLog.data());
 			HZ_CORE_ASSERT(false, "Shader link failure!");
@@ -303,6 +305,9 @@ namespace Hazel {
 		}
 
 		for (auto id : glShaderIDs)
+		{
 			glDetachShader(program, id);
+			glDeleteShader(id);
+		}
 	}
 }
