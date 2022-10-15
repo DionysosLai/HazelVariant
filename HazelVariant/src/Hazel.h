@@ -9,7 +9,7 @@
 #include "Hazel/Input.h"
 #include "Hazel/KeyCodes.h"
 #include "hazel/MouseButtonCodes.h"
-
+#include "Hazel/OrthographicCameraController.h"
 #include "Hazel/Events/ApplicationEvent.h"
 #include "Hazel/Events/Event.h"
 #include "Hazel/Events/KeyEvent.h"
