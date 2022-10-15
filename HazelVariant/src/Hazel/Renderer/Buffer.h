@@ -1,6 +1,6 @@
 #pragma once
 #include "Hzpch.h"
-#include "Hazel/Log.h"
+#include "Hazel/Core/Log.h"
 
 namespace Hazel {
 	enum class ShaderDataType

@@ -3,8 +3,8 @@
 #include "Application.h"
 
 #include "Hazel/Events/ApplicationEvent.h"
-#include "Hazel/Log.h"
-#include "Hazel/Input.h"
+#include "Hazel/Core/Log.h"
+#include "Hazel/Core/Input.h"
 
 #include "Hazel/Renderer/Renderer.h"
 #include <Hazel/Renderer/RenderCommand.h>
