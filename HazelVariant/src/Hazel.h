@@ -26,11 +26,5 @@
 #include "Hazel/Renderer/VertexArray.h"
 #include "Hazel/Renderer/OrthographicCameraController.h"
 #include "Hazel/Renderer/OrthographicCamera.h"
-// -----------------------------------
-
-
-#include "Hazel/ImGui/ImGuiLayer.h"
-// -----Entry Point-------------------------------
-#include "Hazel/Core/EntoryPoint.h"
 
 //  ----------------------------------------------
