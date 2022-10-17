@@ -20,13 +20,11 @@ namespace Hazel {
 	{
 		m_Layers.emplace(m_Layers.begin() + m_LayerInsertIndex, layer);	// 指定位置插入，从前往后
 		m_LayerInsertIndex++;
-		layer->OnAttach();
 	}
 
 	void LayerStack::PushOverlay(Layer* overlay)
 	{
 		m_Layers.emplace_back(overlay);	// 尾巴插入
-		overlay->OnAttach();
 	}
 
 	void LayerStack::PopLayer(Layer* layer)
