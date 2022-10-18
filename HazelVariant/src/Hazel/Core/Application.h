@@ -12,6 +12,8 @@
 #include "Hazel/Events/ApplicationEvent.h"
 #include "Hazel/ImGui/ImGuiLayer.h"
 
+int main(int argc, char** argv);
+
 namespace Hazel {
 	class Application
 	{
@@ -19,7 +21,7 @@ namespace Hazel {
 		Application();
 		virtual ~Application();
 
-		void Run();
+		
 
 		void OnEvent(Event& e);
 
@@ -31,6 +33,8 @@ namespace Hazel {
 		void PushOverLayer(Layer* layer);
 
 	private:
+		void Run();
+
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
@@ -42,6 +46,7 @@ namespace Hazel {
 		
 	private:
 		static Application* s_Instance;
+		friend int ::main(int argc, char** argv);
 	};
 
 	// To be defined in Client
