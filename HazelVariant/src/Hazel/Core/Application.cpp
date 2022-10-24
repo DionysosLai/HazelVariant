@@ -9,7 +9,7 @@
 #include "Hazel/Renderer/Renderer.h"
 #include <Hazel/Renderer/RenderCommand.h>
 
-#include <glfw/glfw3.h>
+#include <GLFW/glfw3.h>
 
 namespace Hazel {
 #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
