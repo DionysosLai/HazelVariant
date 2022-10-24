@@ -31,7 +31,7 @@ void Sandbox2D::OnUpdate(Hazel::Timestep ts)
 	// Render 
 	Hazel::Renderer2D::ResetStats();
 	{
-		HZ_PROFILE_SCOPE("Renderer Prep")
+		HZ_PROFILE_SCOPE("Renderer Prep");
 		Hazel::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Hazel::RenderCommand::Clear();
 	}
