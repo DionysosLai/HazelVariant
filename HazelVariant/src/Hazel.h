@@ -8,7 +8,7 @@
 #include "Hazel/Core/Input.h"
 #include "Hazel/Core/KeyCodes.h"
 #include "hazel/Core/MouseCode.h"
-#include "Hazel/Core/Core.h"
+#include "Hazel/Core/Base.h"
 
 #include "Hazel/Events/ApplicationEvent.h"
 #include "Hazel/Events/Event.h"

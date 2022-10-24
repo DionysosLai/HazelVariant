@@ -28,7 +28,7 @@ void Sandbox2D::OnUpdate(Hazel::Timestep ts)
 
 	m_CameraController.OnUpdate(ts);
 
-	// Render 
+	// Render  
 	Hazel::Renderer2D::ResetStats();
 	{
 		HZ_PROFILE_SCOPE("Renderer Prep");

@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "Core.h"
+#include "Hazel/Core/Base.h"
 #include "Window.h"
 
 #include "Hazel/Core/Timestep.h"
