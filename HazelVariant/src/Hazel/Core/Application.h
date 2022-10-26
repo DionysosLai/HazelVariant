@@ -20,8 +20,7 @@ namespace Hazel {
 	public:
 		Application();
 		virtual ~Application();
-
-		
+		void Close();
 
 		void OnEvent(Event& e);
 

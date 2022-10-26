@@ -39,6 +39,11 @@ namespace Hazel {
 		Renderer::ShutDown();
 	}
 
+	void Application::Close()
+	{
+		m_Running = false;
+	}
+
 	void Hazel::Application::Run()
 	{
 		HZ_PROFILE_FUNCTION();
