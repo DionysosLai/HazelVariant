@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ImGui", "HazelVariant\vendo
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HazelVariant", "HazelVariant\HazelVariant.vcxproj", "{CE39BCF9-BA9C-4B9E-6322-84544F641721}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Hazelnut", "Hazelnut\Hazelnut.vcxproj", "{7052FE3C-5C1F-5948-8538-47F071648ED6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -50,6 +52,12 @@ Global
 		{CE39BCF9-BA9C-4B9E-6322-84544F641721}.Dist|x64.Build.0 = Dist|x64
 		{CE39BCF9-BA9C-4B9E-6322-84544F641721}.Release|x64.ActiveCfg = Release|x64
 		{CE39BCF9-BA9C-4B9E-6322-84544F641721}.Release|x64.Build.0 = Release|x64
+		{7052FE3C-5C1F-5948-8538-47F071648ED6}.Debug|x64.ActiveCfg = Debug|x64
+		{7052FE3C-5C1F-5948-8538-47F071648ED6}.Debug|x64.Build.0 = Debug|x64
+		{7052FE3C-5C1F-5948-8538-47F071648ED6}.Dist|x64.ActiveCfg = Dist|x64
+		{7052FE3C-5C1F-5948-8538-47F071648ED6}.Dist|x64.Build.0 = Dist|x64
+		{7052FE3C-5C1F-5948-8538-47F071648ED6}.Release|x64.ActiveCfg = Release|x64
+		{7052FE3C-5C1F-5948-8538-47F071648ED6}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
