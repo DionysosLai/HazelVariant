@@ -31,6 +31,8 @@ namespace Hazel {
 		void PushLayer(Layer* layer);
 		void PushOverLayer(Layer* layer);
 
+		ImGuiLayer* GetImGuiLayer() { return m_ImGuiLayer; }
+
 	private:
 		void Run();
 
